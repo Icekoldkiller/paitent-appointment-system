@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Welcome, {{ doctor }}!</h2>
+<p><a href="/logout">Logout</a></p>
+<h3>Your Appointments</h3>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Patient</th>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
+    {% for app in appointments %}
+    <tr>
+        <td>{{ app.id }}</td>
+        <td>{{ app.patient_name }}</td>
+        <td>{{ app.date }}</td>
+        <td>{{ app.time }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% if not appointments %}
+    <p>No appointments found.</p>
+{% endif %}
+{% endblock %}
